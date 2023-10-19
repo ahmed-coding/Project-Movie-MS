@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
@@ -15,13 +17,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerNew, recyclerUpComing;
     private RecyclerView.Adapter recyclerNewAdapter, recyclerUpComingAdapter;
     private ArrayList<Movies> movies;
-    private ProgressBar loadingProgress1,loadingProgress2;
+    private ImageView btnProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initViews();
 
     }
@@ -29,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         recyclerNew = (RecyclerView) findViewById(R.id.view1);
         recyclerUpComing = (RecyclerView) findViewById(R.id.view2);
-        loadingProgress1 = (ProgressBar) findViewById(R.id.loading1);
-        loadingProgress2 = (ProgressBar) findViewById(R.id.loading2);
-        loadingProgress1.setVisibility(View.GONE);
-        loadingProgress2.setVisibility(View.GONE);
+
+        btnProfile = findViewById(R.id.btnProfile);
+
         recyclerNew.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerUpComing.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         movies = new ArrayList<Movies>();
@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerNew.setAdapter(recyclerNewAdapter);
         recyclerUpComing.setAdapter(recyclerUpComingAdapter);
 
-
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
