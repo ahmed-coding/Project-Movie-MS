@@ -17,15 +17,18 @@ public class DetailsActivity extends AppCompatActivity {
     private ShapeableImageView pic1;
     private ImageView pic2,backImage;
 
-    private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
         item = (Movies) getIntent().getSerializableExtra("object");
-        titleTxt = (TextView) findViewById(R.id.movieNameTxt);
+         String title,summary,rating,date,time,actor;
+         int posterNormalImage,posterBigImage,id;
+        title =(String) getIntent().getStringExtra("title");
 
+//        Movies item = new Movies(id,title,summary,rating);
+        titleTxt = (TextView) findViewById(R.id.movieNameTxt);
         pic1 = findViewById(R.id.posterNomallmg);
         pic2 = findViewById(R.id.posterBigImg);
         movieRateTxt = (TextView) findViewById(R.id.movieRateTxt);
@@ -34,8 +37,6 @@ public class DetailsActivity extends AppCompatActivity {
         movieDateTxt = (TextView) findViewById(R.id.movieDateTxt);
         movieSummaryTxt = (TextView) findViewById(R.id.moviesSummaryInfo);
         backImage = (ImageView) findViewById(R.id.backImage);
-        recyclerView = findViewById(R.id.imageRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         backImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

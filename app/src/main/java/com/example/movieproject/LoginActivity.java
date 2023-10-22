@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = (Button) findViewById(R.id.btn_login);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 if (editTextUserName.getText().toString().isEmpty() || editTextPassword.getText().toString().isEmpty()) {
